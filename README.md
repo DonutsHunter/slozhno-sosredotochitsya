@@ -10,7 +10,7 @@ https://github.com/DonutsHunter/slozhno-sosredotochitsya
 
 ### Скриншот
 
-![](1024 x 768 - dark.png)
+![](dark_theme.png)
 
 ### Макет
 
