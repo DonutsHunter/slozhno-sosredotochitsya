@@ -109,10 +109,15 @@
 }
 
 .decorated-zone::before {
+  content: "";
+  position: absolute;
+  z-index: -1; 
+  inline-size: 25px;
+  block-size: 25px;
   border-inline-end: 1px solid var(--frame-color, #ff0070);
   border-block-start: 1px solid var(--frame-color, #ff0070);
-  inset-inline-end: clamp(10px, 0.0286rem + 2.5445vw, 20px);
-  inset-block-start: clamp(10px, 0.0286rem + 2.5445vw, 20px);
+  inset-inline-end: clamp(10px, 0.0286rem + 2.5445vw, 20px); /* Адаптивный отступ справа */
+  inset-block-start: clamp(10px, 0.0286rem + 2.5445vw, 20px); /* Адаптивный отступ сверху */
 }
 
 .decorated-zone::after {
@@ -130,21 +135,24 @@
   text-shadow: 4px 4px 0 var(--accent-color, #ff0070);
 }
 
+.header {
+  position: relative; 
+}
+
 .rec {
-  position: fixed; /* Фиксированное положение */
-  z-index: 10; 
+  position: absolute;
+  z-index: 1; 
   visibility: var(--rec-visibility, visible);
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  inset-inline-end: 20px; 
-  inset-block-start: 20px; 
-  color: var(--accent-color, #ff0070); 
-  font-size: 16px; 
+  inset-inline-end: clamp(20px, 0.0286rem + 2.5445vw, 40px); /* Адаптивный отступ справа */
+  inset-block-start: clamp(20px, 0.0286rem + 2.5445vw, 40px); /* Адаптивный отступ сверху */
 }
 
 .rec::before {
   content: "REC";
+  color: var(--accent-color, #ff0070);
   line-height: 24px;
 }
 
@@ -158,20 +166,16 @@
   block-size: 9px;
 }
 
-/* Адаптация для мобильных устройств */
-@media (max-width: 768px) {
+/* Медиа-запрос для экранов меньше 768px */
+@media (max-width: 767px) {
   .rec {
-    inset-inline-end: 10px; 
-    inset-block-start: 10px;
-    font-size: 14px; 
+    inset-inline-end: 20px; /* Фиксированный отступ справа */
+    inset-block-start: 10px; /* Уменьшаем отступ сверху */
   }
-}
 
-/* Адаптация для планшетов */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .rec {
-    inset-inline-end: 15px;
-    inset-block-start: 15px;
+  .decorated-zone::before {
+    inset-inline-end: 10px; /* Фиксированный отступ справа */
+    inset-block-start: 10px; /* Фиксированный отступ сверху */
   }
 }
 
