@@ -131,19 +131,20 @@
 }
 
 .rec {
-  position: absolute;
-  z-index: -1;
+  position: fixed; /* Фиксированное положение */
+  z-index: 10; 
   visibility: var(--rec-visibility, visible);
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  inset-inline-end: 20px;
-  inset-block-start: 10px;
+  inset-inline-end: 20px; 
+  inset-block-start: 20px; 
+  color: var(--accent-color, #ff0070); 
+  font-size: 16px; 
 }
 
 .rec::before {
   content: "REC";
-  color: var(--accent-color, #ff0070);
   line-height: 24px;
 }
 
@@ -155,6 +156,23 @@
   background: var(--accent-color, #ff0070);
   inline-size: 9px;
   block-size: 9px;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+  .rec {
+    inset-inline-end: 10px; 
+    inset-block-start: 10px;
+    font-size: 14px; 
+  }
+}
+
+/* Адаптация для планшетов */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .rec {
+    inset-inline-end: 15px;
+    inset-block-start: 15px;
+  }
 }
 
 .shadow-decor {
